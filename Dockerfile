@@ -21,7 +21,7 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main" > /etc/apt/sources.l
     apt-get clean
 
 # Install packages
-ADD squid3-20140505.tgz /tmp
+ADD https://github.com/fgrehm/squid3-ssl-docker/releases/download/v20140623/squid3-20140623.tgz /tmp
 RUN cd /tmp && \
     dpkg -i debs/*.deb && \
     rm -rf /tmp/debs && \
