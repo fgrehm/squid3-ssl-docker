@@ -28,13 +28,6 @@ RUN cd /tmp && \
     rm -rf /tmp/debs && \
     apt-get clean
 
-# Soon...
-# RUN cd /tmp && \
-#     wget ...URL FROM GITHUB RELEASE... && \
-#     tar xzf squid3-20140505.tgz \
-#     dpkg -i debs/*.deb && \
-#     rm -rf /tmp/debs
-
 # Create cache directory
 VOLUME /var/cache/squid3
 
