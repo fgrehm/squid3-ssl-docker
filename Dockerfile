@@ -17,12 +17,13 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main" > /etc/apt/sources.l
                     libgssapi-krb5-2 \
                     libltdl7 \
                     libecap2 \
-                    libnetfilter-conntrack3 && \
+                    libnetfilter-conntrack3 \
+                    curl && \
     apt-get clean
 
 # Install packages
-ADD https://github.com/fgrehm/squid3-ssl-docker/releases/download/v20140623/squid3-20140623.tgz /tmp
 RUN cd /tmp && \
+    curl -L https://github.com/fgrehm/squid3-ssl-docker/releases/download/v20140623/squid3-20140623.tgz | tar xvz && \
     dpkg -i debs/*.deb && \
     rm -rf /tmp/debs && \
     apt-get clean
