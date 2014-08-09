@@ -8,7 +8,10 @@ sed -i "s|<HOST>|${HOST}|g" /etc/squid3/openssl.cnf
 sed -i "s|<HOST>|${HOST}|g" /etc/squid3/squid.conf
 
 mkdir -p /etc/squid3/certs
-/usr/local/bin/mk-certs
+
+if ! [ -f "/etc/squid3/certs/${HOST}.crt" ]; then
+  /usr/local/bin/mk-certs
+fi
 
 chown -R proxy: /etc/squid3/certs
 
