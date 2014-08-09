@@ -18,7 +18,7 @@ other Docker containers.
 Start Squid3 setting its hostname and container name:
 
 ```
-$ docker run -d -h proxy.docker.dev --name squid3 fgrehm/squid3-ssl
+$ docker run -d -h proxy.docker.dev --name squid3 fgrehm/squid3-ssl:v20140809
 ```
 
 Start another container linking it to the proxy container and setting the
@@ -51,7 +51,7 @@ CA certificate on an Ubuntu container, try these steps:
 
 ```
 # Start Squid3 setting its hostname and container name:
-$ docker run -d -h proxy.docker.dev --name squid3 fgrehm/squid3-ssl
+$ docker run -d -h proxy.docker.dev --name squid3 fgrehm/squid3-ssl:v20140809
 
 # Save the certificate into a file
 $ docker logs squid3 | sed -n '/BEGIN/,/END/p' > proxy.docker.dev.crt
@@ -65,7 +65,7 @@ $ docker run -ti --rm \
            ubuntu:trusty bash
 
 # From within the container, trust the certificate
-$ apt-get update && apt-get install -y ca-certificates
+$ apt-get update && apt-get install -y ca-certificates curl
 $ echo 'proxy.docker.dev.crt' >> /etc/ca-certificates.conf
 $ /usr/sbin/update-ca-certificates
 ```
